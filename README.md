@@ -1,25 +1,43 @@
 # AccessFlow
 
-AccessFlow is a mock enterprise access request system for HR and IT approval workflows. It models the type of internal business software used to request system access, review approvals, track status, and keep an audit history.
+AccessFlow is a mock enterprise access request system inspired by the kind of internal tools used across HR, IT, payroll, and operations teams.
+
+I built this project because I wanted to show more than a polished front end. A lot of real software work happens inside business systems where the important parts are clear workflows, accurate records, approval steps, searchable data, and audit history. AccessFlow models that kind of environment in a small, approachable app.
 
 Live demo: https://briannab1997.github.io/BB-AccessFlow/
 
-## Features
+## What It Does
 
-- Role views for Employee, Manager, and Admin
-- Access request form with employee, system, access level, and justification fields
-- Manager/Admin approval queue
-- Request dashboard with status metrics
-- Searchable and filterable request table
-- Employee directory with department and manager details
-- Audit log for submitted, approved, and denied requests
-- CSV export for request reporting
-- Demo reset for repeatable walkthroughs
-- Responsive layout for desktop and mobile
+- Employees can submit access requests with a system, access level, and business justification.
+- Managers and admins can review pending requests and approve or deny them.
+- The dashboard shows request totals, pending work, approvals, and employee counts.
+- Requests can be searched, filtered by status, and exported to CSV.
+- Employee records include department, title, manager, and location details.
+- Every important action is written to an audit log.
+- Demo data is stored locally so the app can be reset and walked through repeatedly.
 
 ## Why This Project
 
-AccessFlow was built to show practical enterprise software skills: workflow state, data accuracy, role-based views, auditability, reporting, and clear UI for repeat business processes.
+AccessFlow is meant to connect my software engineering background with my experience in healthcare and operations environments, where accuracy, documentation, and process matter. It is not meant to be a real access management product. It is a portfolio project that shows I can think through the shape of business software:
+
+- Who is using the system?
+- What information do they need to see?
+- What state can a request be in?
+- What actions should be tracked?
+- How can the interface stay clear for repeated daily use?
+
+Those questions matter in enterprise development, QA, and systems work, which is exactly the kind of space I am interested in growing into.
+
+## Highlights
+
+- Role-based views for Employee, Manager, and Admin
+- Approval queue with approve/deny actions
+- Request status tracking
+- Audit log for traceability
+- Search and filter tools for request records
+- CSV export for reporting
+- Responsive layout for desktop and mobile
+- Small test suite for seeded data and helper logic
 
 ## Tech Stack
 
@@ -45,6 +63,8 @@ http://localhost:8000
 ```bash
 npm test
 ```
+
+The current test file checks the seeded data, request ID generation, employee lookup, status handling, and basic request integrity.
 
 ## Project Structure
 
