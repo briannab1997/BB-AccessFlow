@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AccessFlow is a mock enterprise access request workflow app for HR and IT approvals." />
+  <title>AccessFlow | Enterprise Access Requests</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Application navigation">
+      <div class="brand">
+        <div class="brand-mark">AF</div>
+        <div>
+          <h1>AccessFlow</h1>
+          <p>HR / IT access workflow</p>
+        </div>
+      </div>
+
+      <nav class="nav-list" aria-label="Primary">
+        <button class="nav-item active" data-view="dashboard">
+          <span>Dashboard</span>
+        </button>
+        <button class="nav-item" data-view="requests">
+          <span>Requests</span>
+        </button>
+        <button class="nav-item" data-view="employees">
+          <span>Employees</span>
+        </button>
+        <button class="nav-item" data-view="audit">
+          <span>Audit Log</span>
+        </button>
+      </nav>
+
+      <div class="role-panel">
+        <p class="panel-label">Role View</p>
+        <div class="role-switcher" role="group" aria-label="Role view">
+          <button class="role-btn active" data-role="employee">Employee</button>
+          <button class="role-btn" data-role="manager">Manager</button>
+          <button class="role-btn" data-role="admin">Admin</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Enterprise workflow demo</p>
+          <h2 id="page-title">Dashboard</h2>
+        </div>
+        <div class="topbar-actions">
+          <button class="ghost-btn" id="btn-reset">Reset Demo</button>
+          <button class="primary-btn" id="btn-export">Export CSV</button>
+        </div>
+      </header>
+
+      <section class="view active" id="view-dashboard" aria-labelledby="page-title">
+        <div class="metrics-grid" id="metrics-grid"></div>
+
+        <div class="content-grid">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="panel-label">New Request</p>
+                <h3>Submit Access Request</h3>
+              </div>
+            </div>
+            <form id="request-form" class="request-form">
+              <label>
+                Employee
+                <select id="employee-select" required></select>
+              </label>
+              <label>
+                System
+                <select id="system-select" required>
+                  <option value="PeopleSoft HR">PeopleSoft HR</option>
+                  <option value="Payroll Portal">Payroll Portal</option>
+                  <option value="Benefits Admin">Benefits Admin</option>
+                  <option value="Service Desk">Service Desk</option>
+                  <option value="Data Warehouse">Data Warehouse</option>
+                </select>
+              </label>
+              <label>
+                Access Level
+                <select id="access-select" required>
+                  <option value="Read Only">Read Only</option>
+                  <option value="Standard User">Standard User</option>
+                  <option value="Approver">Approver</option>
+                  <option value="Reporting">Reporting</option>
+                  <option value="Administrator">Administrator</option>
+                </select>
+              </label>
+              <label>
+                Business Justification
+                <textarea id="reason-input" rows="4" maxlength="180" required placeholder="Example: Needs payroll reporting access for weekly department reconciliation."></textarea>
+              </label>
+              <button type="submit" class="primary-btn full">Submit Request</button>
+            </form>
+          </section>
+
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="panel-label">Queue Health</p>
+                <h3>Requests by Status</h3>
+              </div>
+            </div>
+            <div id="status-bars" class="status-bars"></div>
+          </section>
+        </div>
+
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="panel-label">Manager Work Queue</p>
+              <h3>Pending Approvals</h3>
+            </div>
+          </div>
+          <div id="approval-list" class="approval-list"></div>
+        </section>
+      </section>
+
+      <section class="view" id="view-requests">
+        <section class="panel">
+          <div class="panel-header split">
+            <div>
+              <p class="panel-label">Request Tracking</p>
+              <h3>All Access Requests</h3>
+            </div>
+            <div class="filters">
+              <input type="search" id="request-search" placeholder="Search employee, system, department" />
+              <select id="status-filter">
+                <option value="All">All Statuses</option>
+                <option value="Pending">Pending</option>
+                <option value="Approved">Approved</option>
+                <option value="Denied">Denied</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Employee</th>
+                  <th>Department</th>
+                  <th>System</th>
+                  <th>Access</th>
+                  <th>Status</th>
+                  <th>Submitted</th>
+                </tr>
+              </thead>
+              <tbody id="requests-table"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <section class="view" id="view-employees">
+        <section class="panel">
+          <div class="panel-header split">
+            <div>
+              <p class="panel-label">Directory</p>
+              <h3>Employee Records</h3>
+            </div>
+            <input type="search" id="employee-search" placeholder="Search name, role, department" />
+          </div>
+          <div id="employee-grid" class="employee-grid"></div>
+        </section>
+      </section>
+
+      <section class="view" id="view-audit">
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="panel-label">Compliance Trail</p>
+              <h3>Audit Log</h3>
+            </div>
+          </div>
+          <div id="audit-list" class="audit-list"></div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "bb-accessflow",
+  "version": "1.0.0",
+  "description": "Mock enterprise access request workflow app for HR and IT approvals.",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "test": "node tests/app.test.js"
+  },
+  "keywords": [
+    "enterprise",
+    "workflow",
+    "javascript",
+    "portfolio"
+  ],
+  "author": "Brianna Brockington",
+  "license": "MIT"
+}
