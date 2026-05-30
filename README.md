@@ -6,6 +6,10 @@ I built this project because I wanted to show more than a polished front end. A 
 
 Live demo: https://briannab1997.github.io/BB-AccessFlow/
 
+## Screenshot
+
+![AccessFlow dashboard](assets/accessflow.png)
+
 ## What It Does
 
 - Employees can submit access requests with a system, access level, and business justification.
@@ -38,6 +42,16 @@ Those questions matter in enterprise development, QA, and systems work, which is
 - CSV export for reporting
 - Responsive layout for desktop and mobile
 - Small test suite for seeded data and helper logic
+
+## Skills Demonstrated
+
+- Enterprise workflow design
+- Role-based user interface patterns
+- Access request and approval logic
+- Audit logging and traceability
+- Search, filtering, and CSV reporting
+- Local persistence with browser storage
+- QA-minded validation through tests
 
 ## Tech Stack
 
